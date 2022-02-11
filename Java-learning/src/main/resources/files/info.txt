@@ -1,0 +1,16 @@
+环境信息：
+  测试环境host:172.24.2.163
+  账号/密码:root/qfxlHiDUtaXfpu53RjRR
+  前端页面目录:/root/hcmp/webapp
+  
+  生产环境host:172.22.5.8
+  账号/密码:nginx/bj_CESTC1234
+  前端页面目录:/home/nginx/webroot/cmp-web
+
+例：
+  1.cd /root/hcmp/
+  2.rz -be
+  3.选择本地dist.zip文件
+  4.unzip dist.zip
+  5.rm -rf webapp
+  6.mv dist webapp

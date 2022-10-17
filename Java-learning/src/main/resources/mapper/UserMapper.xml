@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.learning.java8.mapper.UserMapper">
-    <select id="findAll" resultType="com.learning.java8.entity.User">
-        SELECT * FROM user
+<mapper namespace="com.learning.java8.mapper.FieldMapper">
+    <resultMap id="InstanceMap" type="com.learning.java8.entity.Instance">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="instance_name" jdbcType="VARCHAR" property="instanceName"/>
+        <result column="prompt_cn" jdbcType="VARCHAR" property="promptCn"/>
+        <result column="created_time" jdbcType="VARCHAR" property="createdTime"/>
+        <collection property="fields" ofType="com.learning.java8.entity.Field" select="getFields" column="{id=id,list=list}">
+        </collection>
+    </resultMap>
+    <select id="pageList" resultMap="InstanceMap">
+        select
+        *,#{list} list
+        from instance instance
+        order by instance.created_time desc
+    </select>
+    <select id="getFields" resultType="com.learning.java8.entity.Field">
+        select
+            field.id id,
+            field.field_key fieldKey,
+            field.web_conf webConf,
+        ifr.field_value fieldValue
+        from instance_field ifr
+        left join field field on ifr.field_id = field.id
+        where ifr.instance_id = #{id}
+        and field.field_key in
+        <foreach collection="list.split(',')" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
     </select>
 </mapper>

@@ -96,4 +96,13 @@ public class FileTest {
         raf_write.close();
     }
 
+    @Test
+    public void plus() {
+        int value = 0;
+        for (int i = 0; i < 5; i++) {
+            value = value++;
+        }
+        System.out.println("value: " + value);
+    }
+
 }

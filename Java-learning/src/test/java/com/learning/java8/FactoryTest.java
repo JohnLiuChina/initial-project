@@ -8,7 +8,7 @@ import org.junit.Test;
 public class FactoryTest {
 
     @Test
-    public void factory(){
+    public void factory() {
 
         FruitSimplyFactory fruitSimplyFactory = new FruitSimplyFactory();
         Fruit apple = fruitSimplyFactory.declareFruit("apple");
@@ -17,10 +17,10 @@ public class FactoryTest {
     }
 
     @Test
-    public void abstractFactory(){
+    public void abstractFactory() {
 
         Abstract3cFactory apple3cFactory = new Apple3cFactory();
-        Abstract3cFactory  huawei3cFactory = new Huawei3cFactory();
+        Abstract3cFactory huawei3cFactory = new Huawei3cFactory();
         Pc imac = apple3cFactory.makePc();
         Phone iphone = apple3cFactory.makePhone();
         Pc matebook = huawei3cFactory.makePc();

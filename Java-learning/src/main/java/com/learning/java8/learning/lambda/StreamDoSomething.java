@@ -10,15 +10,14 @@ import java.util.stream.Stream;
 
 /**
  * 数据源—>stream->一系列流水线操作->新的stream，不影响数据源
- *
+ * <p>
  * 一、Stream的三个步骤
- *
- *  1.创建Stream
- *
- *  2.中间操作
- *
- *  3.终止操作（终端操作）
- *
+ * <p>
+ * 1.创建Stream
+ * <p>
+ * 2.中间操作
+ * <p>
+ * 3.终止操作（终端操作）
  */
 public class StreamDoSomething {
 
@@ -32,26 +31,27 @@ public class StreamDoSomething {
 
     //内部迭代：迭代操作由Stream API完成
     @Test
-    public void test1(){
+    public void test1() {
         Stream<Apple> stream = list.stream().filter(a -> {
             System.out.println("------------------");
-            return a.getWeight() >= 200;});
+            return a.getWeight() >= 200;
+        });
 //        stream.forEach(System.out::println);
     }
 
     @Test
-    public void filter(){
+    public void filter() {
         list.stream().filter(a -> a.getColor().equals("red")).limit(1).forEach(System.out::println);
     }
 
     @Test
-    public void skip(){
+    public void skip() {
         list.stream().skip(3).forEach(System.out::println);
     }
 
     //distinct接口通过hashCode和equals实现的，所以需要重写hashCode和equals接口
     @Test
-    public void distinct(){
+    public void distinct() {
         list.stream().distinct().forEach(System.out::println);
     }
 
@@ -61,7 +61,7 @@ public class StreamDoSomething {
      * flapMap——接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有的流连接成一个流
      */
     @Test
-    public void map(){
+    public void map() {
         List<String> strings = Arrays.asList("aaa", "bsdfk");
         strings.stream().map(s -> s.toUpperCase()).forEach(System.out::println);
         list.stream().map(Apple::getColor).forEach(System.out::println);
@@ -69,16 +69,16 @@ public class StreamDoSomething {
         list.stream().map(apple -> filterCharacter(apple.getColor())).forEach(s -> s.forEach(System.out::println));
     }
 
-    public Stream<Character> filterCharacter(String str){
+    public Stream<Character> filterCharacter(String str) {
         List<Character> result = new ArrayList<>();
-        for (Character ch : str.toCharArray()){
+        for (Character ch : str.toCharArray()) {
             result.add(ch);
         }
         return result.stream();
     }
 
     @Test
-    public void flatMap(){
+    public void flatMap() {
         list.stream()
                 .flatMap(apple -> filterCharacter(apple.getColor())).forEach(System.out::println);
         List<String> a = Arrays.asList("aaa", "ssf");
@@ -92,11 +92,11 @@ public class StreamDoSomething {
      * sorted(Comparator com)——定制排序
      */
     @Test
-    public void sort(){
+    public void sort() {
         list.stream().sorted((a, b) -> {
-            if(a.getColor().equals(b.getColor())){
+            if (a.getColor().equals(b.getColor())) {
                 return a.getWeight().compareTo(b.getWeight());
-            }else{
+            } else {
                 return a.getColor().compareTo(b.getColor());
             }
         }).forEach(System.out::println);
@@ -107,41 +107,41 @@ public class StreamDoSomething {
     }
 
     @Test
-    public void enumTest(){
+    public void enumTest() {
         StringBuilder stringBuilder = new StringBuilder("q");
         String s = "q";
         System.out.println(stringBuilder.equals(s));
     }
 
     @Test
-    public void testOr(){
+    public void testOr() {
         System.out.println(false || false);
     }
 
     @Test
-    public void testTryCatch(){
-        int []arr = {1, 2, 3, 4};
+    public void testTryCatch() {
+        int[] arr = {1, 2, 3, 4};
         try {
             try {
                 int num_a = arr[4];
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("inside:" + e);
             }
             System.out.println("inside continue");
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("outside:" + e);
         }
         System.out.println("outside continue");
     }
 
     @Test
-    public void testPlus(){
+    public void testPlus() {
         Integer i = 0;
         plus(i);
         System.out.println(i);
     }
 
-    public void plus(Integer i){
+    public void plus(Integer i) {
         i++;
         System.out.println(i);
     }

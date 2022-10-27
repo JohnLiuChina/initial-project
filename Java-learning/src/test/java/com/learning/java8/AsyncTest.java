@@ -18,7 +18,7 @@ public class AsyncTest {
         System.out.println("async result:" + asyncResult);
     }
 
-    private static class Worker implements Runnable{
+    private static class Worker implements Runnable {
 
         @Override
         public void run() {
@@ -27,7 +27,7 @@ public class AsyncTest {
 
     }
 
-    private static class Task implements Callable<String>{
+    private static class Task implements Callable<String> {
 
         @Override
         public String call() throws Exception {

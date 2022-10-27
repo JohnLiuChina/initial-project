@@ -3,13 +3,13 @@ package com.learning.java8.entity;
 import lombok.Data;
 
 @Data
-public class Apple implements Cloneable{
+public class Apple implements Cloneable {
 
     private String color;
     private Long weight;
     private Status status;
 
-    public Apple(){
+    public Apple() {
 
     }
 
@@ -18,7 +18,7 @@ public class Apple implements Cloneable{
         this.weight = weight;
     }
 
-    public Apple(String color, Long weight, Status status){
+    public Apple(String color, Long weight, Status status) {
         this.color = color;
         this.weight = weight;
         this.status = status;
@@ -33,7 +33,7 @@ public class Apple implements Cloneable{
                 '}';
     }
 
-    public enum Status{
+    public enum Status {
         FREE,
         BUSY,
         VOCATION
@@ -43,7 +43,7 @@ public class Apple implements Cloneable{
     public Object clone() {
         Apple apple = null;
         try {
-            apple = (Apple)super.clone();
+            apple = (Apple) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

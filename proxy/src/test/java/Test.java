@@ -25,15 +25,15 @@ public class Test {
     }
 
     @org.junit.Test
-    public void testLevel(){
+    public void testLevel() {
         String dir = "2154/ada/3/56/7582";
 //        dir = dir.substring(1, dir.length());
 //        dir = dir.substring(0, dir.length() - 1);
         List<String> dirs = Arrays.asList(dir.split("/"));
         List<String> insertList = new ArrayList<>();
-        for(int i = 0; i < dirs.size(); i++){
+        for (int i = 0; i < dirs.size(); i++) {
             String tempDir = "";
-            for(int j = 0; j <= i; j++){
+            for (int j = 0; j <= i; j++) {
                 tempDir = tempDir.concat(dirs.get(j)).concat("/");
             }
             insertList.add(tempDir.substring(0, tempDir.length() - 1));
@@ -41,11 +41,11 @@ public class Test {
         System.out.println(JSONObject.toJSONString(insertList));
     }
 
-    private int count(String str, char s2){
+    private int count(String str, char s2) {
 
         int num = 0;
-        for(int i = 0; i < str.length(); i++) {
-            if(str.charAt(i) == s2){
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == s2) {
                 num++;
             }
         }

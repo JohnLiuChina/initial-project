@@ -21,21 +21,21 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class RouteAgentImpl{
+public class RouteAgentImpl {
     public ResponseEntity<String> forward(HttpServletRequest request, HttpServletResponse response, String routeUrl,
-                                           String prefix, String replacement) {
+                                          String prefix, String replacement) {
         try {
             // build up the redirect URL
-            String redirectUrl = createRedictUrl(request,routeUrl, prefix, replacement);
+            String redirectUrl = createRedictUrl(request, routeUrl, prefix, replacement);
             System.out.println("redirectUrl: " + redirectUrl);
             //content-type
             String contentType = request.getHeader("content-type");
             System.out.println("content-type:" + contentType);
-            if(contentType.contains("application/json")){
+            if (contentType.contains("application/json")) {
                 RequestEntity requestEntity = createRequestEntity(request, redirectUrl);
                 return route(requestEntity);
             }
-            if(contentType.contains("multipart/form-data")){
+            if (contentType.contains("multipart/form-data")) {
                 return route4formData(request, redirectUrl);
             }
         } catch (Exception e) {
@@ -67,7 +67,7 @@ public class RouteAgentImpl{
     }
 
     private ResponseEntity<String> route4formData(HttpServletRequest request, String url) {
-        MultipartHttpServletRequest params=((MultipartHttpServletRequest) request);
+        MultipartHttpServletRequest params = ((MultipartHttpServletRequest) request);
 
         Enumeration<String> enumeration = params.getParameterNames();
 
@@ -76,7 +76,7 @@ public class RouteAgentImpl{
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         MultiValueMap map = new LinkedMultiValueMap();
         params.getParameterNames().nextElement();
-        while (enumeration.hasMoreElements()){
+        while (enumeration.hasMoreElements()) {
             String element = (String) enumeration.nextElement();
             map.add(element, params.getParameter(element));
         }

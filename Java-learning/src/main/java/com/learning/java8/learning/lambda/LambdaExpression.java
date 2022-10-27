@@ -27,7 +27,8 @@ public class LambdaExpression {
 
         list.sort(byColor2);
 
-        Runnable i = ()->{};
+        Runnable i = () -> {
+        };
 
         Function<String, String> stringStringFunction = (String str) -> {
             return "123";

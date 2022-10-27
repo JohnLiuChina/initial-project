@@ -11,11 +11,11 @@ public class CyclicBarrierTest {
 
     private final SnowFlake snowFlake = new SnowFlake(31, 31);
 
-    class Worker implements Runnable{
+    class Worker implements Runnable {
 
         private CyclicBarrier cyclicBarrier;
 
-        public Worker(CyclicBarrier cyclicBarrier){
+        public Worker(CyclicBarrier cyclicBarrier) {
             this.cyclicBarrier = cyclicBarrier;
         }
 
@@ -29,7 +29,7 @@ public class CyclicBarrierTest {
                 System.out.println(snowFlake.nextId());
 
             } catch (InterruptedException | BrokenBarrierException e) {
-                log.error(e+"");
+                log.error(e + "");
             }
 
         }
@@ -40,7 +40,7 @@ public class CyclicBarrierTest {
 
         final int N = 5; // 线程数
         CyclicBarrier cyclicBarrier = new CyclicBarrier(N);
-        for(int i=0;i<N;i++){
+        for (int i = 0; i < N; i++) {
             new Thread(new Worker(cyclicBarrier)).start();
         }
 

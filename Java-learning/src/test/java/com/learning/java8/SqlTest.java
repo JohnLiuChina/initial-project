@@ -36,7 +36,7 @@ public class SqlTest {
     private InstanceMapper instanceMapper;
 
     @Test
-    public void sqlTest(){
+    public void sqlTest() {
         IPage<Instance> page = new Page<>(1, 5);
         IPage<Instance> pageSingle = new Page<>(1, 1);
         System.out.println(JSONObject.toJSONString(fieldMapper.pageList(page, "字段1,字段2,创建时间")));
@@ -44,13 +44,13 @@ public class SqlTest {
     }
 
     @Test
-    public void listTest(){
+    public void listTest() {
         List<Field> result = fieldMapper.getFields(2, "字段1,字段2,创建时间");
         System.out.println(JSONObject.toJSONString(result));
     }
 
     @Test
-    public void getIntersection(){
+    public void getIntersection() {
         List<Integer> aList = new ArrayList<>();
         List<Integer> bList = new ArrayList<>();
         List<Integer> cList = new ArrayList<>();

@@ -16,22 +16,22 @@ public class HelloController {
     private FieldMapper fieldMapper;
 
     @RequestMapping("/test")
-    public String hello(){
+    public String hello() {
         System.out.println("here i am");
         return "hello, this is springboot!";
     }
 
     @GetMapping("/field")
-    public Object getFields(){
+    public Object getFields() {
         QueryWrapper<Field> wrapper = new QueryWrapper<>();
         return fieldMapper.selectList(wrapper);
     }
 
-    public void a(){
+    public void a() {
         b();
     }
 
-    public int b(){
+    public int b() {
         return 111;
     }
 

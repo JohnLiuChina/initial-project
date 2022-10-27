@@ -11,13 +11,13 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @Slf4j
 @EnableAsync
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class RedisApplication {
 
     public static void main(String[] args) {
         try {
             SpringApplication.run(RedisApplication.class, args);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("", e);
         }
     }

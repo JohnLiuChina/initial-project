@@ -13,16 +13,17 @@ import java.util.Date;
 public class MonitorAspect {
 
     @Pointcut("execution(* com.example.service..*.*(..))")
-    private void pointcut() {}
+    private void pointcut() {
+    }
 
     @Before("pointcut()")
-    public void before(JoinPoint joinPoint){
+    public void before(JoinPoint joinPoint) {
         System.out.println("ready to enter function" + " " + new Date());
         System.out.println(joinPoint.getSignature().getName() + Arrays.asList(joinPoint.getArgs()));
     }
 
     @After("pointcut()")
-    public void after(){
+    public void after() {
         System.out.println("after" + new Date());
     }
 

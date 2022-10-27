@@ -9,7 +9,7 @@ public class DynamicAppleProxyHandler<T> implements InvocationHandler {
 
     T target;
 
-    public DynamicAppleProxyHandler(T t){
+    public DynamicAppleProxyHandler(T t) {
         this.target = t;
     }
 
@@ -21,7 +21,7 @@ public class DynamicAppleProxyHandler<T> implements InvocationHandler {
         Object result = method.invoke(target, args);
         System.out.println("result：" + result);
         MonitorUtil.finish(method.getName());
-        if(method.getName().equals("getJsonStr")){
+        if (method.getName().equals("getJsonStr")) {
             result += "post handle";
         }
         return result;

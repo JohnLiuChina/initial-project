@@ -23,13 +23,13 @@ public class InstanceLockTest {
             lockTestC.start();
             lockTestD.start();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(Thread.currentThread().getName() + e);
         }
 
     }
 
-    private static void doSth(String instanceUid){
+    private static void doSth(String instanceUid) {
 
         InstanceLock.lock(instanceUid);
         log.info("线程" + Thread.currentThread().getName() + "锁定实例" + instanceUid);

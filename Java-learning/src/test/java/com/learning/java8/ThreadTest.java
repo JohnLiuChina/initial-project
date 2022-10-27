@@ -14,7 +14,7 @@ public class ThreadTest {
         }
     }
 
-    private static class Task extends Thread{
+    private static class Task extends Thread {
         @Override
         public void run() {
             System.out.println(Thread.currentThread().getName() + ":shopping");

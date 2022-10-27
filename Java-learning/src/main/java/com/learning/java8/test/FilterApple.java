@@ -7,19 +7,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FilterApple {
-    public static List<Apple> findGreenApple(List<Apple> apples){
+    public static List<Apple> findGreenApple(List<Apple> apples) {
 
         List<Apple> list = new ArrayList<>();
 
-        for(Apple apple : apples){
-            if("green".equals(apple.getColor())){
+        for (Apple apple : apples) {
+            if ("green".equals(apple.getColor())) {
                 list.add(apple);
             }
         }
         return list;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         List<Apple> list = Arrays.asList(
                 new Apple("green", 150),
                 new Apple("blue", 150),

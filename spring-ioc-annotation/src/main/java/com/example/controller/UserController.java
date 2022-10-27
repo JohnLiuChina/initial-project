@@ -14,8 +14,7 @@ public class UserController {
 //    @Value("#{userServiceImpl}")
 //    @Resource
     /**
-     * @Resource和@Autowired区别
-     * resource依赖JDK autowired依赖spring
+     * @Resource和@Autowired区别 resource依赖JDK autowired依赖spring
      * resource优先根据名字匹配 autowired优先根据类型匹配
      */
     @Autowired

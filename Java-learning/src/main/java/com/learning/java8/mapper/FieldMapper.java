@@ -14,6 +14,7 @@ import java.util.List;
 public interface FieldMapper extends BaseMapper<Field> {
 
     IPage<Instance> pageList(IPage<Instance> page, @Param("list") String list);
+
     List<Field> getFields(@Param("id") Integer instanceId, @Param("list") String keyList);
 
 }

@@ -12,7 +12,7 @@ public class CglibProxyHandler<T> implements MethodInterceptor {
     private T target;
 
     @SuppressWarnings("unchecked")
-    public T getInstance(final T target){
+    public T getInstance(final T target) {
 
         this.target = target;
         Enhancer enhancer = new Enhancer();
@@ -26,6 +26,7 @@ public class CglibProxyHandler<T> implements MethodInterceptor {
      * 注意MethodProxy中invoke和invokeSuper的区别
      * 若使用的是invokeSuper(o, objects)，则实现类this指向的是生成的cglib子类，即使方法实现中是进行的内部调用，仍然会经过责任链中的filter
      * 若使用的是invoke(this.target, objects)，需要注意target是传入的，未被增强，内部调用不会被重复包装。例Spring Aop
+     *
      * @param o
      * @param method
      * @param objects

@@ -1,0 +1,14 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      server-addr: localhost:8080
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public
+        # 实例临时性配置，false为永久实例，即使状态不正常也不会被踢出注册中心
+        ephemeral: false

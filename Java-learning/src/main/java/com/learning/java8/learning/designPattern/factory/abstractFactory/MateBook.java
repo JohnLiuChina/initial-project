@@ -2,7 +2,7 @@ package com.learning.java8.learning.designPattern.factory.abstractFactory;
 
 public class MateBook implements Pc {
 
-    public MateBook(){
+    public MateBook() {
         makePc();
     }
 

@@ -1,4 +1,5 @@
 package com.learning.java8;
+
 import com.alibaba.fastjson.JSONObject;
 import com.learning.java8.utils.SnowFlake;
 import lombok.Data;
@@ -7,7 +8,7 @@ import org.junit.Test;
 public class SnowFlakeTest {
 
     @Test
-    public void snowFlake(){
+    public void snowFlake() {
 
         SnowFlake snowFlake = new SnowFlake(31, 31);
         System.out.println(snowFlake.nextId());
@@ -27,7 +28,7 @@ public class SnowFlakeTest {
     }
 
     @Test
-    public void obj(){
+    public void obj() {
 
         ListNode a = new ListNode(2);
         ListNode b = a;

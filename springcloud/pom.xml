@@ -5,6 +5,8 @@
     <modules>
         <module>order</module>
         <module>stock</module>
+        <module>order-springcloud-loadbalancer</module>
+        <module>product</module>
     </modules>
     <groupId>com.example.springcloud</groupId>
     <artifactId>springcloud-demo</artifactId>

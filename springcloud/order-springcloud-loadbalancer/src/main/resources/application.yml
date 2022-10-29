@@ -1,0 +1,17 @@
+server:
+  port: 8013
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      server-addr: 192.168.79.1:8848
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public
+        # 实例临时性配置，false为永久实例，即使状态不正常也不会被踢出注册中心
+        ephemeral: false
+    loadbalancer:
+      ribbon:
+        enabled: false

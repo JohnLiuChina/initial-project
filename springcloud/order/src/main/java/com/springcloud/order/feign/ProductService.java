@@ -1,6 +1,7 @@
 package com.springcloud.order.feign;
 
 import com.springcloud.order.config.FeignGlobalConfig;
+import com.springcloud.order.feign.sentinal.ProductFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
  *  - 动态代理
  */
 //@FeignClient(name = "product-service", path = "/product")
-@FeignClient(name = "product-service", path = "/product", configuration = FeignGlobalConfig.class)
+@FeignClient(name = "product-service", path = "/product", configuration = FeignGlobalConfig.class, fallback = ProductFallBack.class)
 public interface ProductService {
 
     @PutMapping("/shopping/{id}")

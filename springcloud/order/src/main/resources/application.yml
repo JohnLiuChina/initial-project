@@ -12,6 +12,10 @@ spring:
         namespace: public
         # 实例临时性配置，false为永久实例，即使状态不正常也不会被踢出注册中心
         ephemeral: false
+    # springcloud整合sentinel dashboard（需要调用一次才会注册到sentinel中）
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8888
 stock-service:
   ribbon:
     # 由nacos中配置的权重/或者yml中的weight进行负载均衡
@@ -39,3 +43,5 @@ feign:
         # 指定远程服务的拦截器
         #requestInterceptors[0]:
         #  com.springcloud.order.interceptor.FeignInterceptor
+  sentinel:
+    enabled: true

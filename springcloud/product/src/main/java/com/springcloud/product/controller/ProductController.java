@@ -11,6 +11,7 @@ public class ProductController {
 
     @PutMapping("/shopping/{id}")
     public String shopping(@PathVariable("id") String id) throws InterruptedException {
+        int a = 1/0;
         Thread.sleep(5000);
         return "product " + id + " ok";
     }

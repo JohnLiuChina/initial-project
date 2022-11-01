@@ -50,10 +50,10 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <!--    seata(要放置在涉及到的所有微服务当中)    -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>

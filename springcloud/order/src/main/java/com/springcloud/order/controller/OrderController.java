@@ -7,6 +7,7 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import com.springcloud.order.feign.ProductService;
 import com.springcloud.order.feign.StockService;
+import com.springcloud.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,17 +27,15 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
-    private StockService stockService;
-    @Autowired
     private ProductService productService;
+    @Autowired
+    private OrderService orderService;
 
     @PostMapping("/add")
     public String add(){
+        orderService.insert();
         System.out.println("下单成功");
-        String resp = restTemplate.getForObject("http://stock-service/stock/reduct", String.class);
-        String feignResp = stockService.reduct();
-        String productResp = productService.shopping(UUID.randomUUID().toString());
-        return "ok" + feignResp + productResp;
+        return "ok";
     }
 
     /**

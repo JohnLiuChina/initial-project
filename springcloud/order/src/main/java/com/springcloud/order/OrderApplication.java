@@ -8,10 +8,12 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
 
 @EnableFeignClients
 @SpringBootApplication
+@EnableTransactionManagement
 // 此处为通过配置类的方式进行LB
 //@RibbonClients(value = {
 //        @RibbonClient(name = "stock-service", configuration = LoadbalanceConfig.class)

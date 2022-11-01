@@ -16,9 +16,13 @@
     <packaging>pom</packaging>
     <properties>
         <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <spring.cloud.alibaba>2.2.6.RELEASE</spring.cloud.alibaba>
         <spring.booot.version>2.3.2.RELEASE</spring.booot.version>
         <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
+        <mybatis.startere.version>2.2.2</mybatis.startere.version>
+        <mysql.connector.version>8.0.19</mysql.connector.version>
     </properties>
 
     <dependencyManagement>
@@ -44,6 +48,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.startere.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -59,6 +73,14 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>

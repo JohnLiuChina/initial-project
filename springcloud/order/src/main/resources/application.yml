@@ -16,6 +16,15 @@ spring:
     sentinel:
       transport:
         dashboard: 127.0.0.1:8888
+    alibaba:
+      seata:
+        # 分布式事务 事务分组配置（必配）对应config.txt: service.vgroupMapping.my_test_tx_group=default
+        tx-service-group: my_test_tx_group
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+    username: root
+    password: root
 stock-service:
   ribbon:
     # 由nacos中配置的权重/或者yml中的weight进行负载均衡
@@ -45,3 +54,22 @@ feign:
         #  com.springcloud.order.interceptor.FeignInterceptor
   sentinel:
     enabled: true
+# seata 配置
+seata:
+  # 注册中心配置
+  registry:
+    type: nacos
+    nacos:
+      server-addr: ${spring.cloud.nacos.server-addr}
+      application: seata-server
+      username: ${spring.cloud.nacos.discovery.username}
+      password: ${spring.cloud.nacos.discovery.password}
+      group: SEATA_GROUP
+  # 配置中心配置
+  config:
+    type: nacos
+    nacos:
+      server-addr: ${spring.cloud.nacos.server-addr}
+      username: ${spring.cloud.nacos.discovery.username}
+      password: ${spring.cloud.nacos.discovery.password}
+      group: ${seata.registry.nacos.group}

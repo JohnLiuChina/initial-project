@@ -79,7 +79,7 @@ public class MutipartUploadController {
         PutObjectResult putResult = null;
         try {
             putResult = client.putObject(putRequest);
-        }catch(AmazonServiceException ase) {
+        } catch (AmazonServiceException ase) {
             System.out.println(ase);
         }
         listObjectFromBucket();
@@ -127,11 +127,11 @@ public class MutipartUploadController {
         return client;
     }
 
-    private void listObjectFromBucket(){
+    private void listObjectFromBucket() {
         try {
             ListObjectsV2Result objects = client.listObjectsV2("asiainfo-bucket-2020-1130");
             System.out.println(JSONObject.toJSONString(objects));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -139,10 +139,10 @@ public class MutipartUploadController {
 
     @ResponseBody
     @RequestMapping(value = "/upload", produces = "application/json;charset=utf-8")
-    public String upload(@RequestParam("file") List<MultipartFile> files, HttpServletRequest request, HttpServletResponse response){
+    public String upload(@RequestParam("file") List<MultipartFile> files, HttpServletRequest request, HttpServletResponse response) {
         boolean result = false;
         String filePath = "D:\\迅雷下载\\";
-        for (MultipartFile file : files){
+        for (MultipartFile file : files) {
             String fileName = file.getOriginalFilename();
             File dest = new File(filePath + fileName);
             try {
@@ -157,11 +157,11 @@ public class MutipartUploadController {
 
     @ResponseBody
     @RequestMapping(value = "/download")
-    public ResponseEntity download(HttpServletResponse response){
+    public ResponseEntity download(HttpServletResponse response) {
         try {
             response.setHeader("Content-Disposition", "attachment; filename=private_key.pem");
             response.getOutputStream().write("dsuilhkjsncjklndjlksncjklzsdnjklfcnfd".getBytes());
-        }catch (Throwable e){
+        } catch (Throwable e) {
             log.error("private key download error.{}", e);
             try {
                 response.sendError(400, "request time out");

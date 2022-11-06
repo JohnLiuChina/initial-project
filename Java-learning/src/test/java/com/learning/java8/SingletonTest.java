@@ -4,13 +4,13 @@ import org.junit.Test;
 
 public class SingletonTest {
 
-    static class Volatile{
+    static class Volatile {
         private static String instance = null;
     }
 
     @Test
-    public void test(){
-        for (int i = 0; i < 10; i++){
+    public void test() {
+        for (int i = 0; i < 10; i++) {
             Thread setWorker = new Thread(this::setInstance);
             setWorker.start();
         }
@@ -22,12 +22,12 @@ public class SingletonTest {
         }
     }
 
-    private synchronized void setInstance(){
-        if(Volatile.instance == null){
+    private synchronized void setInstance() {
+        if (Volatile.instance == null) {
             System.out.println("pre to set value of instance");
             Volatile.instance = String.valueOf(Math.random());
             System.out.println("post to set value of instance");
-        }else {
+        } else {
             System.out.println("Volatile.instance:" + Volatile.instance);
         }
     }

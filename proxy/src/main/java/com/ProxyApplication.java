@@ -13,12 +13,13 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @EnableAsync
 @ComponentScan(value = "com.proxy", basePackageClasses = ProxyApplication.class)
-@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class ProxyApplication {
     @Bean
-    public RestTemplate restTemplate(){
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
     public static void main(String[] args) {
         try {
             SpringApplication.run(ProxyApplication.class, args);

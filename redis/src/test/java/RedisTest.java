@@ -18,7 +18,7 @@ public class RedisTest {
     private RedisUtils redisUtils;
 
     @Test
-    public void set() throws Exception{
+    public void set() throws Exception {
         redisUtils.set("a", "b", 25);
         System.out.println(redisUtils.get("a"));
     }
@@ -35,16 +35,16 @@ public class RedisTest {
 
     }
 
-    private void working(){
+    private void working() {
 
         String lockId = "A";
-        if (redisUtils.tryLock(lockId, 30, 0)){
+        if (redisUtils.tryLock(lockId, 30, 0)) {
             System.out.println(Thread.currentThread().getName() + "get lock");
             try {
                 Thread.sleep(3000);
                 System.out.println(Thread.currentThread().getName() + "release lock");
                 redisUtils.releaseLock(lockId);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -52,14 +52,14 @@ public class RedisTest {
     }
 
     @Test
-    public void expireTest(){
+    public void expireTest() {
 
         System.out.println(redisUtils.expire("a", 110));
 
     }
 
     @Test
-    public void snowFlake(){
+    public void snowFlake() {
 
         long t = -1;
         System.out.println(Long.toBinaryString(t));

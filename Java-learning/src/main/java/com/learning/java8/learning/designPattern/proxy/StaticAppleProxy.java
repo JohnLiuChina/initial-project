@@ -12,15 +12,15 @@ public class StaticAppleProxy implements RegisteService {
 
     private RegisteAppleImpl registeApple;
 
-    public StaticAppleProxy(RegisteService appleImpl){
-        if(appleImpl.getClass() == RegisteAppleImpl.class){
+    public StaticAppleProxy(RegisteService appleImpl) {
+        if (appleImpl.getClass() == RegisteAppleImpl.class) {
             this.registeApple = (RegisteAppleImpl) appleImpl;
         }
     }
 
     @Override
     public void registe(String url) {
-        if(registeApple == null){
+        if (registeApple == null) {
             log.error("object to proxy is null");
             return;
         }

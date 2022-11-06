@@ -5,25 +5,26 @@ import org.junit.Test;
 
 public class SychronizedTest {
 
-    public static class SuperClass{
+    public static class SuperClass {
         static {
             System.out.println("super init");
         }
+
         public final static int value = 1;
     }
 
-    public static class SubClass extends SuperClass{
+    public static class SubClass extends SuperClass {
         static {
             System.out.println("sub init");
         }
     }
 
-    class Worker{
+    class Worker {
 
         private Object lock = new Object();
 
-        public void sleep(){
-            synchronized (lock){
+        public void sleep() {
+            synchronized (lock) {
                 System.out.println("begin sleeping" + System.currentTimeMillis());
                 try {
                     Thread.sleep(2000);
@@ -34,8 +35,8 @@ public class SychronizedTest {
             }
         }
 
-        public void drink(){
-            synchronized (this){
+        public void drink() {
+            synchronized (this) {
                 System.out.println("begin drinking" + System.currentTimeMillis());
                 try {
                     Thread.sleep(3000);
@@ -59,7 +60,7 @@ public class SychronizedTest {
     }
 
     @Test
-    public void init(){
+    public void init() {
         System.out.println(SubClass.value);
     }
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReceiveController {
     @RequestMapping(value = "/test/**", method = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 //    public void receive(@RequestBody RequestParam requestParam){
-    public void receive(String userCode){
+    public void receive(String userCode) {
         System.out.println("receive:" + userCode);
     }
 }

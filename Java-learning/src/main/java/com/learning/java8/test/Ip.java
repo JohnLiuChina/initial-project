@@ -53,16 +53,15 @@ public class Ip {
         long ip4 = Integer.parseInt(ips[3]);
 
 
-
-        long ip2long =1L* ip1 * 256 * 256 * 256 + ip2 * 256 * 256 + ip3 * 256 + ip4;
+        long ip2long = 1L * ip1 * 256 * 256 * 256 + ip2 * 256 * 256 + ip3 * 256 + ip4;
 
         return ip2long;
 
     }
 
-    public static void  fun1(){
+    public static void fun1() {
 
-        int ipstart,ipend;
+        int ipstart, ipend;
 
         //String ipstr="10.46.40.1--10.46.88.127";
 //        String ipstr="1.1.1.1--1.1.1.1";
@@ -74,12 +73,12 @@ public class Ip {
         //System.out.println("ipstart --" + ipstart);
         //System.out.println(ipend);
 //        System.out.println(ipend-ipstart+1);
-        String []result=new String[ipend-ipstart+1];
-        for(int i=0;i<result.length;i++){
-            String ip = int2ip(ipstart+i);
+        String[] result = new String[ipend - ipstart + 1];
+        for (int i = 0; i < result.length; i++) {
+            String ip = int2ip(ipstart + i);
 //            System.out.println("i --> " +  ip);
             String[] ipArr = ip.split("\\.");
-            if("0".equals(ipArr[3]) || "255".equals(ipArr[3])){
+            if ("0".equals(ipArr[3]) || "255".equals(ipArr[3])) {
                 continue;
             }
             ips.add(ip);
@@ -87,18 +86,18 @@ public class Ip {
 
     }
 
-    public static String int2ip(int l){
+    public static String int2ip(int l) {
         //System.out.println("l--> " +l);
-        int a = l/(256*256*256);
-        int b = (l-a*256*256*256)/(256*256);
-        int c = (l-a*256*256*256-b*256*256)/256;
-        int d = (l-a*256*256*256-b*256*256-c*256);
+        int a = l / (256 * 256 * 256);
+        int b = (l - a * 256 * 256 * 256) / (256 * 256);
+        int c = (l - a * 256 * 256 * 256 - b * 256 * 256) / 256;
+        int d = (l - a * 256 * 256 * 256 - b * 256 * 256 - c * 256);
         //return l/(256*256*256)+"."+l/(256*256)+"."+l/256+"."+l%256;
-        return a+"."+b+"."+c+"."+d;
+        return a + "." + b + "." + c + "." + d;
     }
 
-    public static int ip2int(String ip){
-        String[] sa=ip.split("\\.");
-        return Integer.parseInt(sa[0])*(256*256*256)+Integer.parseInt(sa[1])*(256*256)+Integer.parseInt(sa[2])*256+Integer.parseInt(sa[3]);
+    public static int ip2int(String ip) {
+        String[] sa = ip.split("\\.");
+        return Integer.parseInt(sa[0]) * (256 * 256 * 256) + Integer.parseInt(sa[1]) * (256 * 256) + Integer.parseInt(sa[2]) * 256 + Integer.parseInt(sa[3]);
     }
 }

@@ -19,7 +19,7 @@ import java.lang.reflect.Proxy;
 public class ProxyTest {
 
     @Test
-    public void staticProxyTest(){
+    public void staticProxyTest() {
 
         String registeUrl = "http://www.test.com";
         RegistePearImpl registeApple = new RegistePearImpl();
@@ -29,7 +29,7 @@ public class ProxyTest {
     }
 
     @Test
-    public void sss(){
+    public void sss() {
 
         int a = -1;
         System.out.println(Integer.toBinaryString(a));
@@ -39,7 +39,7 @@ public class ProxyTest {
     }
 
     @Test
-    public void dynamicProxyTest(){
+    public void dynamicProxyTest() {
 
         String registeUrl = "http://www.test.com";
         RegistePearImpl register = new RegistePearImpl();
@@ -53,7 +53,7 @@ public class ProxyTest {
     }
 
     @Test
-    public void cglibTest(){
+    public void cglibTest() {
 
         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\develop\\cglib");
         RegisteService registePear = new RegistePearImpl();

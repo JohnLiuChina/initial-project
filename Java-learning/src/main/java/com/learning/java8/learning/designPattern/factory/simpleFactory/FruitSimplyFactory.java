@@ -2,9 +2,9 @@ package com.learning.java8.learning.designPattern.factory.simpleFactory;
 
 public class FruitSimplyFactory {
 
-    public Fruit declareFruit(String type){
+    public Fruit declareFruit(String type) {
         Fruit result;
-        switch (type){
+        switch (type) {
             case "apple":
                 result = new Appele();
                 break;

@@ -20,12 +20,13 @@ public class ServletConfiguration {
     private String target_url;
 
     @Bean
-    public Servlet createProxyServlet(){
+    public Servlet createProxyServlet() {
         // 创建新的ProxyServlet
         return new ProxyServlet();
     }
+
     @Bean
-    public ServletRegistrationBean proxyServletRegistration(){
+    public ServletRegistrationBean proxyServletRegistration() {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(createProxyServlet(), servlet_url);
         //设置网址以及参数
         Map<String, String> params = ImmutableMap.of(

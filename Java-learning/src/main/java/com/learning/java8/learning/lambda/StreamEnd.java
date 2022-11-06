@@ -10,15 +10,14 @@ import java.util.stream.Collectors;
 
 /**
  * 数据源—>stream->一系列流水线操作->新的stream，不影响数据源
- *
+ * <p>
  * 一、Stream的三个步骤
- *
- *  1.创建Stream
- *
- *  2.中间操作
- *
- *  3.终止操作（终端操作）
- *
+ * <p>
+ * 1.创建Stream
+ * <p>
+ * 2.中间操作
+ * <p>
+ * 3.终止操作（终端操作）
  */
 public class StreamEnd {
     List<Apple> list = Arrays.asList(
@@ -28,6 +27,7 @@ public class StreamEnd {
             new Apple("yellow", 304L, Apple.Status.VOCATION),
             new Apple("yellow", 304L, Apple.Status.VOCATION)
     );
+
     /**
      * 查找与匹配
      * allMatch——检查是否匹配所有元素
@@ -39,7 +39,7 @@ public class StreamEnd {
      * max/min——返回流中的最大/小值
      */
     @Test
-    public void test(){
+    public void test() {
         System.out.println(list.stream()
                 .allMatch(apple -> apple.getStatus().equals(Apple.Status.BUSY)));
         System.out.println(list.stream()
@@ -67,8 +67,8 @@ public class StreamEnd {
      * reduce(T identity, BinaryOperator) / reduce(BinaryOperator)——可以将流中的元素反复结合起来，得到一个值
      */
     @Test
-    public void reduce(){
-        List<Integer> list = Arrays.asList(1,2,3,4,5,6);
+    public void reduce() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
 
         int sum = list.stream().reduce(0, Integer::sum);
 
@@ -90,7 +90,7 @@ public class StreamEnd {
      * collect——将流转换为其他形式，接收一个Collector接口的实现，用于给stream中元素做汇总的方法
      */
     @Test
-    public void collect(){
+    public void collect() {
         List<String> l = list.stream()
                 .map(Apple::getColor)
                 .collect(Collectors.toList());
@@ -101,7 +101,7 @@ public class StreamEnd {
                 .collect(Collectors.toSet());
         set.forEach(System.out::println);
 
-        LinkedList<String> linkedList=  list.stream()
+        LinkedList<String> linkedList = list.stream()
                 .map(Apple::getColor)
                 .collect(Collectors.toCollection(LinkedList::new));
         linkedList.forEach(System.out::println);
@@ -123,7 +123,7 @@ public class StreamEnd {
      * 分组
      */
     @Test
-    public void group(){
+    public void group() {
         Map<Apple.Status, List<Apple>> apples = list.stream()
                 .collect(Collectors.groupingBy(Apple::getStatus));
         apples.forEach((a, b) -> System.out.println(a + ":" + b));
@@ -133,7 +133,7 @@ public class StreamEnd {
      * 多级分组
      */
     @Test
-    public void multipleGroup(){
+    public void multipleGroup() {
         Map<Apple.Status, Map<String, List<Apple>>> multipleGroup = list.stream()
                 .collect(Collectors.groupingBy(Apple::getStatus, Collectors.groupingBy(Apple::getColor)));
         multipleGroup.forEach((m, v) -> System.out.println(m + ":" + v));
@@ -143,7 +143,7 @@ public class StreamEnd {
      * 分区
      */
     @Test
-    public void partition(){
+    public void partition() {
         Map<Boolean, List<Apple>> map = list.stream()
                 .collect(Collectors.partitioningBy(a -> a.getWeight() >= 150));
         System.out.println(map.get(true));
@@ -153,7 +153,7 @@ public class StreamEnd {
      * 统计
      */
     @Test
-    public void statistic(){
+    public void statistic() {
         LongSummaryStatistics longSummaryStatistics = list.stream()
                 .collect(Collectors.summarizingLong(Apple::getWeight));
         System.out.println(longSummaryStatistics.getAverage());
@@ -167,7 +167,7 @@ public class StreamEnd {
      * 连接
      */
     @Test
-    public void joining(){
+    public void joining() {
         String str = list.stream()
                 .map(Apple::getColor)
                 .collect(Collectors.joining(",", "B", "E"));
@@ -175,8 +175,8 @@ public class StreamEnd {
     }
 
     @Test
-    public void testing(){
-        Integer[] nums = new Integer[]{1,2,3,4,5,6,7};
+    public void testing() {
+        Integer[] nums = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Arrays.stream(nums)
                 .map(n -> n * n)
                 .forEach(System.out::println);
@@ -187,7 +187,7 @@ public class StreamEnd {
     }
 
     @Test
-    public void forEach(){
+    public void forEach() {
 //        list.forEach(System.out::println);
 //
 //        list.forEach(l -> {
@@ -201,7 +201,7 @@ public class StreamEnd {
     }
 
     @Test
-    public void regex(){
+    public void regex() {
         String content = "a22";
 
         String pattern = "^([\\u4e00-\\u9fa5]*$|[A-Za-z]*)$[^@/:=”<>{\\[\\]}\\s\\x22]+.{2,128}$";
@@ -216,18 +216,19 @@ public class StreamEnd {
 
 
     public static final int a = 1;
+
     @Test
-    public void listlist(){
+    public void listlist() {
         String s = String.valueOf(a);
         System.out.println(s);
     }
 
     @Test
-    public void list(){
+    public void list() {
         Apple apple = new Apple();
         List<Apple> list = new ArrayList<>();
-        for(int i = 0; i < 4; i++){
-            apple.setWeight((long)i);
+        for (int i = 0; i < 4; i++) {
+            apple.setWeight((long) i);
             list.add((Apple) apple.clone());
         }
         System.out.println(list);
@@ -235,18 +236,18 @@ public class StreamEnd {
     }
 
     @Test
-    public void nul(){
+    public void nul() {
         System.out.println((double) 16383 / 1024);
     }
 
     @Test
-    public void testEmpty(){
+    public void testEmpty() {
         List<String> strings = new ArrayList<>();
         strings.forEach(System.out::println);
     }
 
     @Test
-    public void emptyFilter(){
+    public void emptyFilter() {
         List<String> strings = Arrays.asList("1", "2", "3");
         strings = strings.stream()
                 .filter(str -> str.equals("1"))
@@ -255,30 +256,30 @@ public class StreamEnd {
     }
 
     @Test
-    public void finallyTest(){
+    public void finallyTest() {
         int i = 1;
-        try{
-            if(i == 1)
+        try {
+            if (i == 1)
                 return;
-        }finally {
+        } finally {
             System.out.println("finally after return of try");
         }
     }
 
     @Test
-    public void testJson(){
+    public void testJson() {
         Map<String, String> map = new HashMap<>();
         map.put("1", "2");
         System.out.println(map.toString());
     }
 
     @Test
-    public void testReplace(){
+    public void testReplace() {
         String uri = "/hcmp/code";
         String[] secondStep = uri.split("/");
         System.out.println(secondStep.length);
         String placeholder = "";
-        for(int i = 0; i < secondStep.length - 1; i++){
+        for (int i = 0; i < secondStep.length - 1; i++) {
             placeholder = placeholder.concat(secondStep[i].concat("/"));
         }
         String result = placeholder.concat("PathVariable");

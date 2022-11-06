@@ -602,13 +602,13 @@ public final class RedisUtils {
         redisTemplate.opsForHyperLogLog().union(key1, key2);
     }
 
-    private boolean lock(String lockId, long expireTime){
+    private boolean lock(String lockId, long expireTime) {
 
         Boolean result;
         try {
             result = redisTemplate.opsForValue()
                     .setIfAbsent(lockId, LOCK_NAME, expireTime, TimeUnit.SECONDS);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("get lock:{} error", lockId, e);
             result = false;
         }
@@ -616,12 +616,12 @@ public final class RedisUtils {
 
     }
 
-    public boolean releaseLock(String lockId){
+    public boolean releaseLock(String lockId) {
 
         Boolean result;
         try {
             result = redisTemplate.delete(lockId);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("release lock:{} error", lockId, e);
             result = false;
         }
@@ -629,17 +629,17 @@ public final class RedisUtils {
 
     }
 
-    public boolean tryLock(String lockId, long expireTime, long retryTime){
+    public boolean tryLock(String lockId, long expireTime, long retryTime) {
 
-        while (true){
+        while (true) {
             try {
-                if(lock(lockId, expireTime)){
+                if (lock(lockId, expireTime)) {
                     return true;
-                }else {
+                } else {
                     log.info(Thread.currentThread().getName() + "未拿到锁");
                     Thread.sleep(retryTime > 0 ? retryTime : SLEEP_TIME);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 log.error("try lock:{} error,", lockId, e);
                 return false;
             }

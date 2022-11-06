@@ -10,7 +10,7 @@ import java.util.List;
 //@Entity
 //@Table(name = "user")
 @Data
-public class User implements Serializable ,Cloneable{
+public class User implements Serializable, Cloneable {
     //@Id//主键
     //@Column(name = "id")//对应列名
     //@GeneratedValue(strategy = GenerationType.IDENTITY)//自增
@@ -42,7 +42,7 @@ public class User implements Serializable ,Cloneable{
     }
 
     @Override
-    public Object clone(){
+    public Object clone() {
         try {
             return super.clone();
         } catch (CloneNotSupportedException e) {

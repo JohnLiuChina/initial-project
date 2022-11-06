@@ -10,25 +10,24 @@ import java.util.stream.Stream;
 
 /**
  * 数据源—>stream->一系列流水线操作->新的stream，不影响数据源
- *
+ * <p>
  * 一、Stream的三个步骤
- *
- *  1.创建Stream
- *
- *  2.中间操作
- *
- *  3.终止操作（终端操作）
- *
+ * <p>
+ * 1.创建Stream
+ * <p>
+ * 2.中间操作
+ * <p>
+ * 3.终止操作（终端操作）
  */
 public class StreamCreate {
     //创建Stream
     @Test
-    public void createStream(){
+    public void createStream() {
         //通过Collection系列集合提供的stream()——串行流 或parallelStream()——并行流
         List<String> list = new ArrayList<>();
         Stream<String> stream = list.stream();
         //通过Arrays中的静态方法stream()获取数组流
-        Apple[]array = new Apple[10];
+        Apple[] array = new Apple[10];
         Stream<Apple> stream1 = Arrays.stream(array);
         //通过Stream中的静态方法of()获取数据流
         Stream<String> stringStream = Stream.of("aa", "bb", "vccc");

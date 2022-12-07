@@ -20,6 +20,7 @@ public class FilterApple {
     }
 
     public static void main(String[] args) {
+
         List<Apple> list = Arrays.asList(
                 new Apple("green", 150),
                 new Apple("blue", 150),
@@ -39,5 +40,7 @@ public class FilterApple {
         blue.setWeight(apple.getWeight());
         apple.setWeight(1L);
         System.out.println(blue);
+
     }
+
 }

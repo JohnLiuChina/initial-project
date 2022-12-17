@@ -25,7 +25,7 @@ public class ExecutorUtil {
     }
 
     private static ThreadFactory basicThreadFactory = new BasicThreadFactory.Builder()
-            .namingPattern("ExecutorUtil-").build();
+            .namingPattern("ExecutorUtil-" + THREAD_NAME).build();
 
     /**
      * 获取单例的线程池对象--单例的双重校验

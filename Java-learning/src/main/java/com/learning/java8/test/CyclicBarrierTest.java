@@ -36,11 +36,42 @@ public class CyclicBarrierTest {
 
     }
 
+    class WorkerB implements Runnable {
+
+        private CyclicBarrier cyclicBarrier;
+
+        public WorkerB(CyclicBarrier cyclicBarrier) {
+            this.cyclicBarrier = cyclicBarrier;
+        }
+
+        @Override
+        public void run() {
+
+            try {
+
+                cyclicBarrier.await(); // 等待其它线程
+                //do something...
+                System.out.println(java.lang.Thread.currentThread().getName() + snowFlake.nextId());
+
+            } catch (InterruptedException | BrokenBarrierException e) {
+                log.error(e + "");
+            }
+
+        }
+
+    }
+
     public void doTest() throws InterruptedException {
 
         final int N = 5; // 线程数
         CyclicBarrier cyclicBarrier = new CyclicBarrier(N);
-        for (int i = 0; i < N; i++) {
+        new Thread(new WorkerB(cyclicBarrier)).start();
+        for (int i = 0; i < 4; i++) {
+            new Thread(new Worker(cyclicBarrier)).start();
+        }
+        // CyclicBarrier可以重复使用，每满足N个await就唤醒这N个线程
+        new Thread(new WorkerB(cyclicBarrier)).start();
+        for (int i = 0; i < 4; i++) {
             new Thread(new Worker(cyclicBarrier)).start();
         }
 

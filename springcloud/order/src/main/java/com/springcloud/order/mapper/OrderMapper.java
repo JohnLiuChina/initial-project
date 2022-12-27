@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface OrderMapper {
 
-    @Insert("insert into field values(111, 'aa', 'abc', 'testing')")
+    @Insert("insert into field values(null, 'aa', 'abc', 'testing')")
     void insert();
 
 }

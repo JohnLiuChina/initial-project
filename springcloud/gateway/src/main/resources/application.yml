@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      server-addr: 192.168.89.1:8848
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public
+        # 实例临时性配置，false为永久实例，即使状态不正常也不会被踢出注册中心
+        ephemeral: false
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order-svc/order/**
+          filters:
+            - StripPrefix=1
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8888

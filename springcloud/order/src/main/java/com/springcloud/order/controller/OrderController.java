@@ -8,6 +8,7 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import com.springcloud.order.feign.ProductService;
 import com.springcloud.order.feign.StockService;
 import com.springcloud.order.service.OrderService;
+import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,7 @@ public class OrderController {
     @PostMapping("/add")
     public String add(){
         orderService.insert();
+        orderService.paramTest(UUID.randomUUID().toString());
         System.out.println("下单成功");
         return "ok";
     }
@@ -46,6 +48,7 @@ public class OrderController {
      *
      * @return
      */
+    @Trace
     @GetMapping("/detail")
     @SentinelResource(value = "detail", blockHandler = "detailFlowHandle")
     public String detail() {

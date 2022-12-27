@@ -4,4 +4,6 @@ public interface OrderService {
 
     void insert();
 
+    String paramTest(String str);
+
 }

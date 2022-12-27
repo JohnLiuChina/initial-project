@@ -49,6 +49,18 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <!--    skywalking 自定义链路追踪工具类    -->
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-trace</artifactId>
+            <version>8.5.0</version>
+        </dependency>
+        <!--    skywalking日志依赖类    -->
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
+            <version>8.5.0</version>
+        </dependency>
         <!--    seata(要放置在涉及到的所有微服务当中)    -->
 <!--        <dependency>-->
 <!--            <groupId>com.alibaba.cloud</groupId>-->

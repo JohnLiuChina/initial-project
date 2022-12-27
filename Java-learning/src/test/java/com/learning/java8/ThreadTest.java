@@ -9,6 +9,7 @@ public class ThreadTest {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     public static void main(String[] args) {
+        System.out.println(tryCatch());
         System.out.println(Thread.currentThread().getName() + ":1234");
         Task task = new Task();
         task.start();
@@ -67,6 +68,16 @@ public class ThreadTest {
                 e.printStackTrace();
             }
             System.out.println(Thread.currentThread().getName() + ":shopping over");
+        }
+    }
+
+    private static int tryCatch() {
+        try {
+            System.out.println("----");
+        } catch (Exception e) {
+            return 2;
+        } finally {
+            return 1;
         }
     }
 

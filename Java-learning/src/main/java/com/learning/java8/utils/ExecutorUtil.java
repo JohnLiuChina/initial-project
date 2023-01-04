@@ -35,7 +35,7 @@ public class ExecutorUtil {
     public static ThreadPoolExecutor getThreadPool() {
         if (executor == null) {
             synchronized (ExecutorUtil.class) {
-                if (executor == null) { // todo:双检锁在指令重排序下的漏洞
+                if (executor == null) { // 双检锁在指令重排序下的漏洞用volatile解决
                     // 获取处理器数量
                     int cpuNum = Runtime.getRuntime().availableProcessors();
                     // 根据cpu数量,计算出合理的线程并发数

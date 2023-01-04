@@ -1,5 +1,8 @@
 package com.learning.java8.test;
 
+import com.learning.java8.learning.designPattern.flyweight.BasePowerBankFlyWeight;
+import com.learning.java8.learning.designPattern.flyweight.PowerBank;
+import com.learning.java8.learning.designPattern.flyweight.PowerBankFactory;
 import com.learning.java8.utils.SnowFlake;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,7 +29,9 @@ public class CyclicBarrierTest {
 
                 cyclicBarrier.await(); // 等待其它线程
                 //do something...
-                System.out.println(snowFlake.nextId());
+//                System.out.println(snowFlake.nextId());
+                PowerBank powerBank = (PowerBank) PowerBankFactory.usePowerBank(1);
+                System.out.println(powerBank.getId() + " " + powerBank.getBrand());
 
             } catch (InterruptedException | BrokenBarrierException e) {
                 log.error(e + "");
@@ -63,17 +68,16 @@ public class CyclicBarrierTest {
 
     public void doTest() throws InterruptedException {
 
-        final int N = 5; // 线程数
+        final int N = 3; // 线程数
         CyclicBarrier cyclicBarrier = new CyclicBarrier(N);
-        new Thread(new WorkerB(cyclicBarrier)).start();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < N; i++) {
             new Thread(new Worker(cyclicBarrier)).start();
         }
         // CyclicBarrier可以重复使用，每满足N个await就唤醒这N个线程
-        new Thread(new WorkerB(cyclicBarrier)).start();
-        for (int i = 0; i < 4; i++) {
-            new Thread(new Worker(cyclicBarrier)).start();
-        }
+//        new Thread(new WorkerB(cyclicBarrier)).start();
+//        for (int i = 0; i < 4; i++) {
+//            new Thread(new Worker(cyclicBarrier)).start();
+//        }
 
     }
 

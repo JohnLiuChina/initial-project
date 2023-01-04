@@ -6,10 +6,21 @@ public class LazySingleton {
     private LazySingleton() {
     }    //private 避免类在外部被实例化
 
-    public static synchronized LazySingleton getInstance() {
+    public static synchronized LazySingleton getInstanceSynchronized() {
         //getInstance 方法前加同步
         if (instance == null) {
             instance = new LazySingleton();
+        }
+        return instance;
+    }
+
+    public static LazySingleton getInstanceLazy() {
+        if (instance == null) {
+            synchronized (LazySingleton.class) {
+                if (instance == null) {
+                    instance = new LazySingleton();
+                }
+            }
         }
         return instance;
     }

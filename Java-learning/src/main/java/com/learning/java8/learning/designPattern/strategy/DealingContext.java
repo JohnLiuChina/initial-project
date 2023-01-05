@@ -36,13 +36,7 @@ public class DealingContext {
             return;
         }
         AbstractLoader loader = (AbstractLoader) dealingService;
-        loader.load();
-        loader.verify();
-        loader.prepare();
-        loader.analysis();
-        loader.init();
-        loader.instantiation();
-        loader.uninstall();
+        loader.allInOne();
     }
 
 }

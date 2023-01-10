@@ -1,5 +1,6 @@
 package com.learning.java8.learning.designPattern.strategy;
 
+import com.learning.java8.aspect.Custom;
 import com.learning.java8.utils.ExecutorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,19 @@ import java.util.concurrent.Future;
 @DealingType(type = "normal")
 public class NormalWorker extends AbstractLoader implements DealingService {
 
+    @Custom(info = "normal")
     @Override
     public Future<?> dealing() {
         return ExecutorUtil.submit(() -> {
             log.info("normal dealing enter");
             return UUID.randomUUID().toString();
         });
+    }
+
+    @Custom(info = "allInOne")
+    @Override
+    public void allInOne() {
+        super.allInOne();
     }
 
     @Override

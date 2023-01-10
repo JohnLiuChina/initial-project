@@ -1,5 +1,6 @@
 package com.learning.java8.learning.designPattern.strategy;
 
+import com.learning.java8.aspect.Custom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,13 @@ public class DealingContext {
         services.forEach(service -> {
             Class<? extends DealingService> aClass = service.getClass();
             DealingType annotation = aClass.getAnnotation(DealingType.class);
-            serviceMap.put(annotation.type(), service);
+            if (annotation != null) {
+                serviceMap.put(annotation.type(), service);
+            }
         });
     }
 
+    @Custom(info = "dealing")
     public Future<?> dealing(String type) {
         DealingService dealingService = serviceMap.get(type);
         if (dealingService == null) {
